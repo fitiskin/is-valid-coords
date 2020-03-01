@@ -1,0 +1,64 @@
+{
+  "name": "is-valid-coords",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Artem Fitiskin <artemfitiskin@gmail.com> (https://github.com/fitiskin)",
+  "description": "This simple utility verifies if a given coordinates is valid",
+  "keywords": [
+    "geo",
+    "validation",
+    "coordinates",
+    "latitude",
+    "longitude"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fitiskin/is-valid-coords.git"
+  },
+  "homepage": "https://github.com/fitiskin/is-valid-coords#readme",
+  "bugs": {
+    "url": "https://github.com/fitiskin/is-valid-coords/issues"
+  },
+  "files": [
+    "lib",
+    "es"
+  ],
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "typings": "es/index.d.ts",
+  "scripts": {
+    "clean": "rimraf lib es",
+    "prebuild": "npm run clean",
+    "build": "npm-run-all build:*",
+    "build:node": "tsc --outDir lib",
+    "build:module": "tsc --outDir es --module esnext",
+    "build:types": "tsc --outDir es --emitDeclarationOnly --noEmit false --declaration",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch",
+    "test:coverage": "npm run test -- --coverage",
+    "lint": "eslint --ext .js,.ts .",
+    "format": "prettier --write \"src/**/*.{js,ts}\" index.d.ts \"**/*.md\"",
+    "format:check": "prettier --list-different \"src/**/*.{js,ts}\" index.d.ts \"**/*.md\"",
+    "typecheck": "tsc --noEmit",
+    "prepare": "npm-run-all typecheck format:check lint && npm run test",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/jest": "^25.1.3",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "babel-jest": "^25.1.0",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "1.19.1",
+    "rimraf": "^3.0.2",
+    "type-fest": "^0.11.0",
+    "typescript": "^3.8.3"
+  }
+}
