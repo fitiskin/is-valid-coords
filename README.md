@@ -2,8 +2,9 @@
 
 [![Build Status](https://travis-ci.com/fitiskin/is-valid-coords.svg?branch=master)](https://travis-ci.com/fitiskin/is-valid-coords)
 ![](https://badgen.net/github/license/fitiskin/is-valid-coords)
+![](https://badgen.net/bundlephobia/minzip/is-valid-coords)
 
-Simple dependency-free utility to provide coordinates validation written in TypeScript.
+Tiny dependency-free utility to provide coordinates validation written in TypeScript.
 
 ## Install
 
