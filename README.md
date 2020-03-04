@@ -1,8 +1,11 @@
 # isValidCoords
 
 [![Build Status](https://travis-ci.com/fitiskin/is-valid-coords.svg?branch=master)](https://travis-ci.com/fitiskin/is-valid-coords)
-![](https://badgen.net/github/license/fitiskin/is-valid-coords)
+![](https://badgen.net/npm/v/is-valid-coords)
 ![](https://badgen.net/bundlephobia/minzip/is-valid-coords)
+![](https://badgen.net/david/dep/fitiskin/is-valid-coords)
+![](https://badgen.net/david/dev/fitiskin/is-valid-coords)
+![](https://badgen.net/npm/types/is-valid-coords)
 
 Tiny dependency-free utility to provide coordinates validation written in TypeScript.
 
