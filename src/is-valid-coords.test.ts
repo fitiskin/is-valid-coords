@@ -1,9 +1,10 @@
-import isValidCoords, {
+import isValidCoords from "./is-valid-coords";
+import {
   LATITUDE_MIN,
   LATITUDE_MAX,
   LONGITUDE_MIN,
   LONGITUDE_MAX
-} from "./is-valid-coords";
+} from "./constants";
 
 let defaultCoordinates;
 
