@@ -80,6 +80,9 @@ describe("is-valid-coords", function() {
 
     test("Должен возвращать false на falsy-аргументы", function() {
       expect(isValidCoords(null)).toBe(false);
+      expect(isValidCoords(null, null)).toBe(false);
+      expect(isValidCoords(defaultCoordinates.latitude, null)).toBe(false);
+      expect(isValidCoords(null, defaultCoordinates.longitude)).toBe(false);
     });
 
     test("Должен обрабатывать строки как координаты", function() {
@@ -91,8 +94,6 @@ describe("is-valid-coords", function() {
       expect(isValidCoords("55.7558, 37.6173")).toBe(true);
       expect(isValidCoords("55.7558,37.6173")).toBe(true);
       expect(isValidCoords(" 55.7558, 37.6173  ")).toBe(true);
-      expect(isValidCoords("55.7558,")).toBe(true);
-      expect(isValidCoords(",37.6173")).toBe(true);
     });
 
     test("При обработке строки принимает только корректные значения", function() {

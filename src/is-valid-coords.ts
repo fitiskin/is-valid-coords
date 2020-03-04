@@ -41,6 +41,13 @@ function isValidCoords(
     param2 = parts.longitude ?? parts.lng ?? parts.lon ?? parts.long;
   }
 
+  if (
+    (!param1 && typeof param1 !== "number") ||
+    (!param2 && typeof param2 !== "number")
+  ) {
+    return false;
+  }
+
   const latitude: Coordinate = Number(param1);
   const longitude: Coordinate = Number(param2);
 
