@@ -1,3 +1,3 @@
 export * from "./types";
-export * from "./is-valid-coords";
+export * from "./constants";
 export { default } from "./is-valid-coords";
