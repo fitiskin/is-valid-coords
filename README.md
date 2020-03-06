@@ -25,6 +25,8 @@ yarn add is-valid-coords
 
 ## Usage
 
+### isValidCoords
+
 ```javascript
 import isValidCoords from "is-valid-coords";
 
@@ -37,10 +39,22 @@ isValidCoords(0, 0);
 
 // false
 isValidCoords(null);
-isValidCoords(100, 500);
+isValidCoords();
 ```
 
-## Overloads
+### getValidCoords
+
+```javascript
+import { getValidCoords } from "is-valid-coords";
+
+// [latitude, longitude]
+const coords1 = getValidCoords(55.7558, 37.6173);
+
+// null
+const coords2 = getValidCoords(100, 500);
+```
+
+## Variants
 
 ```javascript
 // two arguments
