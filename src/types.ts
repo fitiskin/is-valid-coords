@@ -1,30 +1,26 @@
 import { RequireExactlyOne } from "type-fest";
 
-export type Coordinate = number | string;
+export type Coordinates = [number, number];
 
-export type CoordinatePart = Coordinate | undefined;
+export type CoordinatesPart = number | string | undefined;
 
-export type CoorinatesArray = Readonly<[CoordinatePart, CoordinatePart]>;
+export type CoordinatesArray = Readonly<[CoordinatesPart, CoordinatesPart]>;
 
-export type CoorinatesString = string;
+export type CoordinatesString = string;
 
-export type CoordinateLatitudeKeys = "latitude" | "lat";
-
-export type CoordinateLongitudeKeys = "longitude" | "lng" | "lon" | "long";
-
-export type CoorinatesObjectLatitude = {
-  lat?: CoordinatePart;
-  latitude?: CoordinatePart;
+export type CoordinatesObjectLatitude = {
+  lat?: CoordinatesPart;
+  latitude?: CoordinatesPart;
 };
 
-export type CoorinatesObjectLongitude = {
-  lng?: CoordinatePart;
-  lon?: CoordinatePart;
-  long?: CoordinatePart;
-  longitude?: CoordinatePart;
+export type CoordinatesObjectLongitude = {
+  lng?: CoordinatesPart;
+  lon?: CoordinatesPart;
+  long?: CoordinatesPart;
+  longitude?: CoordinatesPart;
 };
 
-export type CoorinatesObject = RequireExactlyOne<CoorinatesObjectLatitude> &
-  RequireExactlyOne<CoorinatesObjectLongitude> & {
+export type CoordinatesObject = RequireExactlyOne<CoordinatesObjectLatitude> &
+  RequireExactlyOne<CoordinatesObjectLongitude> & {
     [key: string]: unknown;
   };

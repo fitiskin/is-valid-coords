@@ -1,9 +1,8 @@
 import {
-  Coordinate,
-  CoordinatePart,
-  CoorinatesArray,
-  CoorinatesString,
-  CoorinatesObject
+  CoordinatesPart,
+  CoordinatesArray,
+  CoordinatesString,
+  CoordinatesObject
 } from "./types";
 import {
   LATITUDE_MIN,
@@ -13,44 +12,45 @@ import {
 } from "./constants";
 
 function isValidCoords(
-  latitude: CoordinatePart,
-  longitude: CoordinatePart
+  latitude: CoordinatesPart,
+  longitude: CoordinatesPart
 ): boolean;
-function isValidCoords(coords: CoorinatesArray): boolean;
-function isValidCoords(coords: CoorinatesString): boolean;
-function isValidCoords(coords: CoorinatesObject): boolean;
 
 function isValidCoords(
-  param1: CoordinatePart | CoorinatesArray | CoorinatesObject,
-  param2?: CoordinatePart
+  coords: CoordinatesArray | CoordinatesString | CoordinatesObject
+): boolean;
+
+function isValidCoords(
+  part1: CoordinatesPart | CoordinatesArray | CoordinatesObject,
+  part2?: CoordinatesPart
 ): boolean {
-  // isValidCoords(`${lat},${lng}`)
-  if (typeof param1 === "string" && typeof param2 === "undefined") {
-    [param1, param2] = param1.split(",");
+  // 'lat, lng'
+  if (typeof part1 === "string" && typeof part2 === "undefined") {
+    [part1, part2] = part1.split(",");
   }
 
-  // isValidCoords([lat, lng])
-  else if (Array.isArray(param1)) {
-    [param1, param2] = param1;
+  // [lat, lng]
+  else if (Array.isArray(part1)) {
+    [part1, part2] = part1;
   }
 
-  // isValidCoords({ lat, lng })
-  else if (typeof param1 === "object" && param1 !== null) {
-    const parts = param1 as CoorinatesObject;
+  // { lat, lng }
+  else if (typeof part1 === "object" && part1 !== null) {
+    const parts = part1 as CoordinatesObject;
 
-    param1 = parts.latitude ?? parts.lat;
-    param2 = parts.longitude ?? parts.lng ?? parts.lon ?? parts.long;
+    part1 = parts.latitude ?? parts.lat;
+    part2 = parts.longitude ?? parts.lng ?? parts.lon ?? parts.long;
   }
 
   if (
-    (!param1 && typeof param1 !== "number") ||
-    (!param2 && typeof param2 !== "number")
+    (!part1 && typeof part1 !== "number") ||
+    (!part2 && typeof part2 !== "number")
   ) {
     return false;
   }
 
-  const latitude: Coordinate = Number(param1);
-  const longitude: Coordinate = Number(param2);
+  const latitude = Number(part1);
+  const longitude = Number(part2);
 
   return (
     !Number.isNaN(latitude) &&
