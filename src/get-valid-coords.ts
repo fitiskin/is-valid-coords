@@ -3,13 +3,13 @@ import {
   CoordinatesArray,
   CoordinatesString,
   CoordinatesObject,
-  Coordinates
+  Coordinates,
 } from "./types";
 import {
   LATITUDE_MIN,
   LATITUDE_MAX,
   LONGITUDE_MIN,
-  LONGITUDE_MAX
+  LONGITUDE_MAX,
 } from "./constants";
 
 function getValidCoords(

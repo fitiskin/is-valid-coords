@@ -2,7 +2,7 @@ import {
   CoordinatesPart,
   CoordinatesArray,
   CoordinatesString,
-  CoordinatesObject
+  CoordinatesObject,
 } from "./types";
 import getValidCoords from "./get-valid-coords";
 

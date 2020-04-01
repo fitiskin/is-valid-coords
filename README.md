@@ -71,6 +71,6 @@ isValidCoords("55.7558, 37.6173");
 // - longitude, lng, lon, long
 isValidCoords({
   latitude: 55.7558,
-  longitude: 37.6173
+  longitude: 37.6173,
 });
 ```

@@ -11,7 +11,7 @@ jest.mock("./get-valid-coords", () => {
   });
 });
 
-describe("is-valid-coords", function() {
+describe("is-valid-coords", function () {
   test("Корректно передает аргументы в getValidCoords", () => {
     isValidCoords(55.7558, 37.6173);
 
