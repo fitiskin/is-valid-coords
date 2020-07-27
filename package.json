@@ -43,22 +43,21 @@
     "prepare": "npm-run-all typecheck format:check lint && npm run test",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-typescript": "^7.9.0",
-    "@types/jest": "^25.1.4",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
-    "babel-jest": "^25.2.4",
-    "eslint": "^6.8.0",
-    "husky": "^4.2.3",
-    "jest": "^25.2.4",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.7",
+    "@typescript-eslint/eslint-plugin": "^3.7.0",
+    "@typescript-eslint/parser": "^3.7.0",
+    "babel-jest": "^26.1.0",
+    "eslint": "^7.5.0",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.2",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
-    "type-fest": "^0.12.0",
-    "typescript": "^3.8.3"
+    "type-fest": "^0.16.0",
+    "typescript": "^3.9.7"
   }
 }
