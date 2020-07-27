@@ -1,7 +1,7 @@
 # isValidCoords
 
 [![Build Status](https://travis-ci.com/fitiskin/is-valid-coords.svg?branch=master)](https://travis-ci.com/fitiskin/is-valid-coords)
-![](https://badgen.net/npm/v/is-valid-coords)
+[![NPM](https://badgen.net/npm/v/is-valid-coords)](https://www.npmjs.com/package/is-valid-coords)
 ![](https://badgen.net/bundlephobia/minzip/is-valid-coords)
 ![](https://badgen.net/david/dep/fitiskin/is-valid-coords)
 ![](https://badgen.net/david/dev/fitiskin/is-valid-coords)
