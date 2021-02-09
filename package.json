@@ -1,6 +1,6 @@
 {
   "name": "is-valid-coords",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "license": "MIT",
   "author": "Artem Fitiskin <artemfitiskin@gmail.com> (https://github.com/fitiskin)",
   "description": "This simple utility verifies if a given coordinates is valid",
