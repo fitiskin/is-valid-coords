@@ -94,8 +94,7 @@ describe("get-valid-coords", function () {
 
     test("Должен обрабатывать строки с пробелами как координаты", function () {
       expect(getValidCoords(" 55.7558", "37.6173  ")).toEqual([
-        55.7558,
-        37.6173,
+        55.7558, 37.6173,
       ]);
     });
 
@@ -118,8 +117,7 @@ describe("get-valid-coords", function () {
 
     test("Должен обрабатывать подходящий массив строк", function () {
       expect(getValidCoords(["55.7558", "37.6173"])).toEqual([
-        55.7558,
-        37.6173,
+        55.7558, 37.6173,
       ]);
     });
 
