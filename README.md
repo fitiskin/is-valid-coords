@@ -1,11 +1,19 @@
 # isValidCoords
 
-[![Build Status](https://travis-ci.com/fitiskin/is-valid-coords.svg?branch=master)](https://travis-ci.com/fitiskin/is-valid-coords)
-[![NPM](https://badgen.net/npm/v/is-valid-coords)](https://www.npmjs.com/package/is-valid-coords)
-![](https://badgen.net/bundlephobia/minzip/is-valid-coords)
-![](https://badgen.net/david/dep/fitiskin/is-valid-coords)
-![](https://badgen.net/david/dev/fitiskin/is-valid-coords)
-![](https://badgen.net/npm/types/is-valid-coords)
+<p>
+  <a aria-label="NPM version" href="https://www.npmjs.com/package/is-valid-coords">
+    <img alt="" src="https://badgen.net/npm/v/is-valid-coords">
+  </a>
+  <a aria-label="Package size" href="https://bundlephobia.com/result?p=is-valid-coords">
+    <img alt="" src="https://badgen.net/bundlephobia/minzip/is-valid-coords">
+  </a>
+  <a aria-label="License" href="https://github.com/fitiskin/is-valid-coords/blob/main/LICENSE">
+    <img alt="" src="https://badgen.net/npm/license/is-valid-coords">
+  </a>
+  <a aria-label="Build status" href="https://travis-ci.com/fitiskin/is-valid-coords">
+     <img alt="" src="https://travis-ci.com/fitiskin/is-valid-coords.svg?branch=master">
+  </a>
+</p>
 
 Tiny dependency-free utility to provide coordinates validation written in TypeScript.
 
