@@ -11,7 +11,7 @@
     <img alt="" src="https://badgen.net/npm/license/is-valid-coords">
   </a>
   <a aria-label="Build status" href="https://travis-ci.com/fitiskin/is-valid-coords">
-     <img alt="" src="https://travis-ci.com/fitiskin/is-valid-coords.svg?branch=master">
+     <img alt="" src="https://travis-ci.com/fitiskin/is-valid-coords.svg?branch=main">
   </a>
 </p>
 
