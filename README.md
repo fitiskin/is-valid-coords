@@ -10,9 +10,6 @@
   <a aria-label="License" href="https://github.com/fitiskin/is-valid-coords/blob/main/LICENSE">
     <img alt="" src="https://badgen.net/npm/license/is-valid-coords">
   </a>
-  <a aria-label="Build status" href="https://travis-ci.com/fitiskin/is-valid-coords">
-     <img alt="" src="https://travis-ci.com/fitiskin/is-valid-coords.svg?branch=main">
-  </a>
 </p>
 
 Tiny dependency-free utility to provide coordinates validation written in TypeScript.
