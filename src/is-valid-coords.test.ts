@@ -12,13 +12,13 @@ jest.mock("./get-valid-coords", () => {
 });
 
 describe("is-valid-coords", function () {
-  test("Корректно передает аргументы в getValidCoords", () => {
+  test("Correctly passes arguments to getValidCoords", () => {
     isValidCoords(55.7558, 37.6173);
 
     expect(getValidCoords).toHaveBeenCalledWith(55.7558, 37.6173);
   });
 
-  test("Корректно возвращает boolean от результата getValidCoords", () => {
+  test("Correctly returns boolean from getValidCoords result", () => {
     expect(isValidCoords(55.7558, 37.6173)).toBe(true);
     expect(isValidCoords(null)).toBe(false);
   });
