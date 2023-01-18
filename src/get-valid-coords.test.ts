@@ -8,8 +8,8 @@ import {
 import { CoordinatesArray, CoordinatesObject } from "./types";
 
 describe("get-valid-coords", function () {
-  describe("Корректно проверяет координаты", function () {
-    test("Должен обрабатывать обычные координаты", () => {
+  describe("Correctly checks coordinates", function () {
+    test("Should handle regular coordinates", () => {
       const latitude = 55.7558;
       const longitude = 37.6173;
 
@@ -19,42 +19,42 @@ describe("get-valid-coords", function () {
       ]);
     });
 
-    test("Должен обрабатывать нулевую точку", () => {
+    test("Must handle zero value", () => {
       const latitude = 0;
       const longitude = 0;
 
       expect(getValidCoords(latitude, longitude)).toEqual([0, 0]);
     });
 
-    test("Не должен обрабатывать широту за максимальным пределом", () => {
+    test("Must not handle latitude beyond the max limit", () => {
       const latitude = LATITUDE_MAX + 1;
       const longitude = 37.6173;
 
       expect(getValidCoords(latitude, longitude)).toBe(null);
     });
 
-    test("Не должен обрабатывать широту за минимальным пределом", () => {
+    test("Must not handle latitude beyond the minimum limit", () => {
       const latitude = LATITUDE_MIN - 1;
       const longitude = 37.6173;
 
       expect(getValidCoords(latitude, longitude)).toBe(null);
     });
 
-    test("Не должен обрабатывать долготу за максимальным пределом", () => {
+    test("Must not handle longitude beyond the maximum limit", () => {
       const latitude = 55.7558;
       const longitude = LONGITUDE_MAX + 1;
 
       expect(getValidCoords(latitude, longitude)).toBe(null);
     });
 
-    test("Не должен обрабатывать долготу за минимальным пределом", () => {
+    test("Must not handle longitude beyond the minimum limit", () => {
       const latitude = 55.7558;
       const longitude = LONGITUDE_MIN - 1;
 
       expect(getValidCoords(latitude, longitude)).toBe(null);
     });
 
-    test("Должен обрабатывать граничные положительные значения", () => {
+    test("Must handle marginal positive values", () => {
       const latitude = LATITUDE_MAX;
       const longitude = LONGITUDE_MAX;
 
@@ -64,7 +64,7 @@ describe("get-valid-coords", function () {
       ]);
     });
 
-    test("Должен обрабатывать граничные отрицательные значения", () => {
+    test("Must handle boundary negative values", () => {
       const latitude = -LATITUDE_MIN;
       const longitude = -LONGITUDE_MIN;
 
@@ -75,54 +75,54 @@ describe("get-valid-coords", function () {
     });
   });
 
-  describe("Корректно обрабатывает аргументы", function () {
-    test("Должен возвращать false, если не переданы аргументы", function () {
+  describe("Handles arguments correctly", function () {
+    test("Should return false if no arguments are passed", function () {
       expect(getValidCoords(undefined)).toBe(null);
     });
 
-    test("Должен возвращать false на falsy-аргументы", function () {
+    test("Should return false on falsy arguments", function () {
       expect(getValidCoords(null)).toBe(null);
       expect(getValidCoords(null, null)).toBe(null);
       expect(getValidCoords(55.7558, null)).toBe(null);
       expect(getValidCoords(null, 37.6173)).toBe(null);
     });
 
-    test("Должен обрабатывать строки как координаты", function () {
+    test("Should treat strings as coordinates", function () {
       expect(getValidCoords("55.7558", "37.6173")).toEqual([55.7558, 37.6173]);
       expect(getValidCoords("0", "0")).toEqual([0, 0]);
     });
 
-    test("Должен обрабатывать строки с пробелами как координаты", function () {
+    test("Must treat strings with spaces as coordinates", function () {
       expect(getValidCoords(" 55.7558", "37.6173  ")).toEqual([
         55.7558, 37.6173,
       ]);
     });
 
-    test("Должен обрабатывать строку как координаты", function () {
+    test("Must treat string as coordinates", function () {
       expect(getValidCoords("55.7558, 37.6173")).toEqual([55.7558, 37.6173]);
       expect(getValidCoords("55.7558,37.6173")).toEqual([55.7558, 37.6173]);
       expect(getValidCoords(" 55.7558, 37.6173  ")).toEqual([55.7558, 37.6173]);
     });
 
-    test("При обработке строки принимает только корректные значения", function () {
+    test("When processing a string, it only accepts valid values", function () {
       expect(getValidCoords("55.7558")).toBe(null);
       expect(getValidCoords("")).toBe(null);
       expect(getValidCoords("test,test")).toBe(null);
     });
 
-    test("Должен обрабатывать подходящий массив чисел", function () {
+    test("Should handle a suitable array of numbers", function () {
       expect(getValidCoords([55.7558, 37.6173])).toEqual([55.7558, 37.6173]);
       expect(getValidCoords([0, 0])).toEqual([0, 0]);
     });
 
-    test("Должен обрабатывать подходящий массив строк", function () {
+    test("Should handle a suitable array of strings", function () {
       expect(getValidCoords(["55.7558", "37.6173"])).toEqual([
         55.7558, 37.6173,
       ]);
     });
 
-    describe("Корректно обрабатывает объекты с подходящими ключами", function () {
-      test("Должен обрабатывать ключи latitude, longitude", function () {
+    describe("Correctly handles objects with matching keys", function () {
+      test("Must handle latitude, longitude keys", function () {
         const latitude = 55.7558;
         const longitude = 37.6173;
 
@@ -134,7 +134,7 @@ describe("get-valid-coords", function () {
         ).toEqual([latitude, longitude]);
       });
 
-      test("Должен обрабатывать ключи lat, lng", function () {
+      test("Should handle lat, lng keys", function () {
         const latitude = 55.7558;
         const longitude = 37.6173;
 
@@ -146,7 +146,7 @@ describe("get-valid-coords", function () {
         ).toEqual([latitude, longitude]);
       });
 
-      test("Должен обрабатывать ключи lat, lon", function () {
+      test("Must handle lat, lon keys", function () {
         const latitude = 55.7558;
         const longitude = 37.6173;
 
@@ -158,7 +158,7 @@ describe("get-valid-coords", function () {
         ).toEqual([latitude, longitude]);
       });
 
-      test("Должен обрабатывать ключи lat, long", function () {
+      test("Should handle lat, long keys", function () {
         const latitude = 55.7558;
         const longitude = 37.6173;
 
@@ -170,7 +170,7 @@ describe("get-valid-coords", function () {
         ).toEqual([latitude, longitude]);
       });
 
-      test("Должен корректно обрабатывать ноль", function () {
+      test("Should correctly handle null", function () {
         expect(
           getValidCoords({
             lat: 0,
@@ -180,7 +180,7 @@ describe("get-valid-coords", function () {
       });
     });
 
-    test("Должен обрабатывать смешанные значения string/number", function () {
+    test("Should handle mixed string/number values", function () {
       expect(getValidCoords("55.7558", 0)).toEqual([55.7558, 0]);
       expect(getValidCoords(0, "37.6173")).toEqual([0, 37.6173]);
       expect(getValidCoords(55.7558, "37.6173")).toEqual([55.7558, 37.6173]);
@@ -188,8 +188,8 @@ describe("get-valid-coords", function () {
     });
   });
 
-  describe("Не модифицирует аргументы", function () {
-    test("Не меняет переданный массив", function () {
+  describe("Does not modify arguments", function () {
+    test("Doesn't change the passed array", function () {
       const input: CoordinatesArray = ["55.7558", "37.6173"];
 
       getValidCoords(input);
@@ -197,7 +197,7 @@ describe("get-valid-coords", function () {
       expect(input).toEqual(["55.7558", "37.6173"]);
     });
 
-    test("Не меняет переданный объект", function () {
+    test("Does not change the passed object", function () {
       const input: CoordinatesObject = { lat: "55.7558", lng: "37.6173" };
 
       getValidCoords(input);
