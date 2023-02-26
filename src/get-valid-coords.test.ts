@@ -1,3 +1,5 @@
+import { describe, test, expect } from "vitest";
+
 import getValidCoords from "./get-valid-coords";
 import {
   LATITUDE_MIN,
@@ -81,10 +83,12 @@ describe("get-valid-coords", function () {
     });
 
     test("Should return false on falsy arguments", function () {
-      expect(getValidCoords(null)).toBe(null);
-      expect(getValidCoords(null, null)).toBe(null);
-      expect(getValidCoords(55.7558, null)).toBe(null);
-      expect(getValidCoords(null, 37.6173)).toBe(null);
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      expect(getValidCoords(null as any)).toBe(null);
+      expect(getValidCoords(null as any, null as any)).toBe(null);
+      expect(getValidCoords(55.7558, null as any)).toBe(null);
+      expect(getValidCoords(null as any, 37.6173)).toBe(null);
+      /* eslint-enable @typescript-eslint/no-explicit-any */
     });
 
     test("Should treat strings as coordinates", function () {

@@ -33,9 +33,9 @@
     "build:node": "tsc --outDir lib",
     "build:module": "tsc --outDir es --module esnext",
     "build:types": "tsc --outDir es --emitDeclarationOnly --noEmit false --declaration",
-    "test": "jest",
-    "test:watch": "npm run test -- --watch",
-    "test:coverage": "npm run test -- --coverage",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "lint": "eslint --ext .js,.ts .",
     "format": "prettier --write \"src/**/*.{js,ts}\" \"**/*.md\"",
     "format:check": "prettier --list-different \"src/**/*.{js,ts}\" \"**/*.md\"",
@@ -44,20 +44,16 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/preset-env": "^7.14.4",
-    "@babel/preset-typescript": "^7.10.4",
-    "@types/jest": "^29.1.2",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.39.0",
-    "babel-jest": "^29.1.2",
+    "@vitest/coverage-c8": "^0.29.1",
     "eslint": "^8.25.0",
     "husky": "^8.0.1",
-    "jest": "^29.1.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
     "type-fest": "^3.0.0",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.2",
+    "vitest": "^0.29.1"
   }
 }
