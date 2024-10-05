@@ -7,12 +7,12 @@ import {
 import getValidCoords from "./get-valid-coords";
 
 function isValidCoords(
-  coords: CoordinatesArray | CoordinatesObject | CoordinatesString
+  coords: CoordinatesArray | CoordinatesObject | CoordinatesString,
 ): boolean;
 
 function isValidCoords(
   latitude: CoordinatesPart,
-  longitude: CoordinatesPart
+  longitude: CoordinatesPart,
 ): boolean;
 
 function isValidCoords(...args: Parameters<typeof getValidCoords>): boolean {

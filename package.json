@@ -19,41 +19,61 @@
   "bugs": {
     "url": "https://github.com/fitiskin/is-valid-coords/issues"
   },
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
   "files": [
-    "lib",
-    "es"
+    "dist"
   ],
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "typings": "es/index.d.ts",
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
-    "clean": "rimraf lib es",
-    "prebuild": "npm run clean",
-    "build": "npm-run-all build:*",
-    "build:node": "tsc --outDir lib",
-    "build:module": "tsc --outDir es --module esnext",
-    "build:types": "tsc --outDir es --emitDeclarationOnly --noEmit false --declaration",
+    "prebuild": "shx rm -rf ./dist && shx mkdir -p ./dist/cjs && shx echo '{\"type\": \"commonjs\"}'> ./dist/cjs/package.json",
+    "build": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "lint": "eslint --ext .js,.ts .",
-    "format": "prettier --write \"src/**/*.{js,ts}\" \"**/*.md\"",
-    "format:check": "prettier --list-different \"src/**/*.{js,ts}\" \"**/*.md\"",
-    "typecheck": "tsc --noEmit",
-    "prepare": "npm-run-all typecheck format:check lint && npm run test",
+    "lint": "prettier --check \"src/**/*.{js,ts}\" \"**/*.md\" && eslint .",
+    "format": "prettier --write \"src/**/*.{js,ts}\" \"**/*.md\" && eslint --fix .",
+    "prepare": "husky",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.39.0",
-    "@typescript-eslint/parser": "^5.39.0",
-    "@vitest/coverage-c8": "^0.29.1",
-    "eslint": "^8.25.0",
-    "husky": "^8.0.1",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.3.0",
-    "rimraf": "^4.1.2",
-    "type-fest": "^3.0.0",
-    "typescript": "^4.3.2",
-    "vitest": "^0.29.1"
+    "@eslint/js": "^9.12.0",
+    "@types/eslint__js": "^8.42.3",
+    "@vitest/coverage-v8": "^2.1.2",
+    "eslint": "^9.12.0",
+    "eslint-plugin-jest": "^28.8.3",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "shx": "^0.3.4",
+    "type-fest": "^4.26.1",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.8.0",
+    "vitest": "^2.1.2"
+  },
+  "lint-staged": {
+    "*.md": [
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }
