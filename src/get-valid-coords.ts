@@ -18,7 +18,7 @@ function getValidCoords(
     | CoordinatesObject
     | CoordinatesString
     | CoordinatesPart,
-  param2?: CoordinatesPart
+  param2?: CoordinatesPart,
 ): Coordinates | null {
   // 'lat, lng'
   if (typeof param1 === "string" && typeof param2 === "undefined") {

@@ -134,7 +134,7 @@ describe("get-valid-coords", function () {
           getValidCoords({
             latitude,
             longitude,
-          })
+          }),
         ).toEqual([latitude, longitude]);
       });
 
@@ -146,7 +146,7 @@ describe("get-valid-coords", function () {
           getValidCoords({
             lat: latitude,
             lng: longitude,
-          })
+          }),
         ).toEqual([latitude, longitude]);
       });
 
@@ -158,7 +158,7 @@ describe("get-valid-coords", function () {
           getValidCoords({
             lat: latitude,
             lon: longitude,
-          })
+          }),
         ).toEqual([latitude, longitude]);
       });
 
@@ -170,7 +170,7 @@ describe("get-valid-coords", function () {
           getValidCoords({
             lat: latitude,
             long: longitude,
-          })
+          }),
         ).toEqual([latitude, longitude]);
       });
 
@@ -179,7 +179,7 @@ describe("get-valid-coords", function () {
           getValidCoords({
             lat: 0,
             lng: 0,
-          })
+          }),
         ).toEqual([0, 0]);
       });
     });
