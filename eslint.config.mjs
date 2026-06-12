@@ -1,6 +1,6 @@
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
-import jestPlugin from "eslint-plugin-jest";
+import vitest from "@vitest/eslint-plugin";
 
 export default tseslint.config(
   {
@@ -10,7 +10,7 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   {
     plugins: {
-      jest: jestPlugin,
+      vitest,
     },
   },
 );

@@ -11,6 +11,7 @@ import {
   LONGITUDE_MIN,
   LONGITUDE_MAX,
 } from "./constants";
+import { isCoordinatesObject, normalizeCoordinatesPart } from "./utils";
 
 function getValidCoords(
   param1:
@@ -31,26 +32,17 @@ function getValidCoords(
   }
 
   // { lat, lng }
-  else if (typeof param1 === "object" && param1 !== null) {
-    const parts = param1 as CoordinatesObject;
-
-    param1 = parts.latitude ?? parts.lat;
-    param2 = parts.longitude ?? parts.lng ?? parts.lon ?? parts.long;
+  else if (isCoordinatesObject(param1)) {
+    param2 = param1.longitude ?? param1.lng ?? param1.lon ?? param1.long;
+    param1 = param1.latitude ?? param1.lat;
   }
 
-  if (
-    (!param1 && typeof param1 !== "number") ||
-    (!param2 && typeof param2 !== "number")
-  ) {
-    return null;
-  }
-
-  const latitude = Number(param1);
-  const longitude = Number(param2);
+  const latitude = normalizeCoordinatesPart(param1);
+  const longitude = normalizeCoordinatesPart(param2);
 
   if (
-    Number.isNaN(latitude) ||
-    Number.isNaN(longitude) ||
+    latitude == null ||
+    longitude == null ||
     latitude < LATITUDE_MIN ||
     latitude > LATITUDE_MAX ||
     longitude < LONGITUDE_MIN ||

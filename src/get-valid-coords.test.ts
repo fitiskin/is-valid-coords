@@ -10,7 +10,7 @@ import {
 import { CoordinatesArray, CoordinatesObject } from "./types";
 
 describe("get-valid-coords", function () {
-  describe("Correctly checks coordinates", function () {
+  describe("Coordinate validation", function () {
     test("Should handle regular coordinates", () => {
       const latitude = 55.7558;
       const longitude = 37.6173;
@@ -21,42 +21,42 @@ describe("get-valid-coords", function () {
       ]);
     });
 
-    test("Must handle zero value", () => {
+    test("Should handle zero value", () => {
       const latitude = 0;
       const longitude = 0;
 
       expect(getValidCoords(latitude, longitude)).toEqual([0, 0]);
     });
 
-    test("Must not handle latitude beyond the max limit", () => {
+    test("Should reject latitude above the maximum limit", () => {
       const latitude = LATITUDE_MAX + 1;
       const longitude = 37.6173;
 
       expect(getValidCoords(latitude, longitude)).toBe(null);
     });
 
-    test("Must not handle latitude beyond the minimum limit", () => {
+    test("Should reject latitude below the minimum limit", () => {
       const latitude = LATITUDE_MIN - 1;
       const longitude = 37.6173;
 
       expect(getValidCoords(latitude, longitude)).toBe(null);
     });
 
-    test("Must not handle longitude beyond the maximum limit", () => {
+    test("Should reject longitude above the maximum limit", () => {
       const latitude = 55.7558;
       const longitude = LONGITUDE_MAX + 1;
 
       expect(getValidCoords(latitude, longitude)).toBe(null);
     });
 
-    test("Must not handle longitude beyond the minimum limit", () => {
+    test("Should reject longitude below the minimum limit", () => {
       const latitude = 55.7558;
       const longitude = LONGITUDE_MIN - 1;
 
       expect(getValidCoords(latitude, longitude)).toBe(null);
     });
 
-    test("Must handle marginal positive values", () => {
+    test("Should handle marginal positive values", () => {
       const latitude = LATITUDE_MAX;
       const longitude = LONGITUDE_MAX;
 
@@ -66,9 +66,9 @@ describe("get-valid-coords", function () {
       ]);
     });
 
-    test("Must handle boundary negative values", () => {
-      const latitude = -LATITUDE_MIN;
-      const longitude = -LONGITUDE_MIN;
+    test("Should handle boundary negative values", () => {
+      const latitude = LATITUDE_MIN;
+      const longitude = LONGITUDE_MIN;
 
       expect(getValidCoords(latitude, longitude)).toEqual([
         latitude,
@@ -77,12 +77,12 @@ describe("get-valid-coords", function () {
     });
   });
 
-  describe("Handles arguments correctly", function () {
-    test("Should return false if no arguments are passed", function () {
+  describe("Argument handling", function () {
+    test("Should return null if no arguments are passed", function () {
       expect(getValidCoords(undefined)).toBe(null);
     });
 
-    test("Should return false on falsy arguments", function () {
+    test("Should return null for invalid arguments", function () {
       /* eslint-disable @typescript-eslint/no-explicit-any */
       expect(getValidCoords(null as any)).toBe(null);
       expect(getValidCoords(null as any, null as any)).toBe(null);
@@ -91,42 +91,45 @@ describe("get-valid-coords", function () {
       /* eslint-enable @typescript-eslint/no-explicit-any */
     });
 
-    test("Should treat strings as coordinates", function () {
+    test("Should parse coordinate strings", function () {
       expect(getValidCoords("55.7558", "37.6173")).toEqual([55.7558, 37.6173]);
       expect(getValidCoords("0", "0")).toEqual([0, 0]);
     });
 
-    test("Must treat strings with spaces as coordinates", function () {
+    test("Should handle coordinate strings with surrounding whitespace", function () {
       expect(getValidCoords(" 55.7558", "37.6173  ")).toEqual([
         55.7558, 37.6173,
       ]);
     });
 
-    test("Must treat string as coordinates", function () {
+    test("Should parse coordinates from a comma-separated string", function () {
       expect(getValidCoords("55.7558, 37.6173")).toEqual([55.7558, 37.6173]);
       expect(getValidCoords("55.7558,37.6173")).toEqual([55.7558, 37.6173]);
       expect(getValidCoords(" 55.7558, 37.6173  ")).toEqual([55.7558, 37.6173]);
     });
 
-    test("When processing a string, it only accepts valid values", function () {
+    test("Should reject invalid coordinate strings", function () {
       expect(getValidCoords("55.7558")).toBe(null);
       expect(getValidCoords("")).toBe(null);
+      expect(getValidCoords(" , ")).toBe(null);
       expect(getValidCoords("test,test")).toBe(null);
     });
 
-    test("Should handle a suitable array of numbers", function () {
+    test("Should handle a valid array of numbers", function () {
       expect(getValidCoords([55.7558, 37.6173])).toEqual([55.7558, 37.6173]);
       expect(getValidCoords([0, 0])).toEqual([0, 0]);
     });
 
-    test("Should handle a suitable array of strings", function () {
+    test("Should handle a valid array of strings", function () {
       expect(getValidCoords(["55.7558", "37.6173"])).toEqual([
         55.7558, 37.6173,
       ]);
+
+      expect(getValidCoords([" ", " "])).toBe(null);
     });
 
-    describe("Correctly handles objects with matching keys", function () {
-      test("Must handle latitude, longitude keys", function () {
+    describe("Coordinate objects", function () {
+      test("Should handle latitude, longitude keys", function () {
         const latitude = 55.7558;
         const longitude = 37.6173;
 
@@ -150,7 +153,7 @@ describe("get-valid-coords", function () {
         ).toEqual([latitude, longitude]);
       });
 
-      test("Must handle lat, lon keys", function () {
+      test("Should handle lat, lon keys", function () {
         const latitude = 55.7558;
         const longitude = 37.6173;
 
@@ -174,13 +177,15 @@ describe("get-valid-coords", function () {
         ).toEqual([latitude, longitude]);
       });
 
-      test("Should correctly handle null", function () {
+      test("Should handle object coordinates with zero values", function () {
         expect(
           getValidCoords({
             lat: 0,
             lng: 0,
           }),
         ).toEqual([0, 0]);
+
+        expect(getValidCoords({ lat: " ", lng: " " })).toBe(null);
       });
     });
 
@@ -193,7 +198,7 @@ describe("get-valid-coords", function () {
   });
 
   describe("Does not modify arguments", function () {
-    test("Doesn't change the passed array", function () {
+    test("Should not modify the input array", function () {
       const input: CoordinatesArray = ["55.7558", "37.6173"];
 
       getValidCoords(input);
@@ -201,7 +206,7 @@ describe("get-valid-coords", function () {
       expect(input).toEqual(["55.7558", "37.6173"]);
     });
 
-    test("Does not change the passed object", function () {
+    test("Should not modify the input object", function () {
       const input: CoordinatesObject = { lat: "55.7558", lng: "37.6173" };
 
       getValidCoords(input);

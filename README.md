@@ -45,7 +45,7 @@ isValidCoords({ latitude: 55.7558, longitude: 37.6173 });
 isValidCoords();
 isValidCoords(-100, 200);
 isValidCoords([]);
-isValidCoords('');
+isValidCoords("");
 isValidCoords(null);
 isValidCoords({});
 ```

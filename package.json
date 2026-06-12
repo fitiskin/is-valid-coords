@@ -3,7 +3,7 @@
   "version": "1.4.0",
   "license": "MIT",
   "author": "Artem Fitiskin <artemfitiskin@gmail.com> (https://github.com/fitiskin)",
-  "description": "This simple utility verifies if a given coordinates is valid",
+  "description": "This simple utility verifies whether given coordinates are valid",
   "keywords": [
     "geo",
     "validation",
@@ -53,19 +53,17 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@eslint/js": "^9.12.0",
+    "@eslint/js": "^10.0.1",
     "@types/eslint__js": "^8.42.3",
-    "@vitest/coverage-v8": "^2.1.2",
-    "eslint": "^9.12.0",
-    "eslint-plugin-jest": "^28.8.3",
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3",
-    "shx": "^0.3.4",
-    "type-fest": "^4.26.1",
-    "typescript": "^5.6.2",
-    "typescript-eslint": "^8.8.0",
-    "vitest": "^2.1.2"
+    "@vitest/eslint-plugin": "^1.6.20",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.4",
+    "shx": "^0.4.0",
+    "type-fest": "^5.7.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.0",
+    "vitest": "^4.1.8"
   },
   "lint-staged": {
     "*.md": [
